@@ -1,0 +1,91 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<main>
+   {# SECTION USER PROFILE #}
+    <section class="user-profile">
+        <h2>VOS INFORMATIONS</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Vos informations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nom</td>
+                        <td>{{ userProfile.getName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Prénom</td>
+                        <td>{{ userProfile.getUserFirstname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mail</td>
+                        <td>{{ userProfile.getEmail }}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>+33(0) {{ userProfile.getUserTel }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                             <form action="{{ path('profile-delete') }}" method="POST" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer votre compte');">
+                                <input type="hidden" name="user_id" value="{{ userProfile.getId }}"></input>
+                                <button type="submit">Supprimer mon compte</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ path('profile-update') }}" method="POST">
+                                <input type="hidden" name="user_id" value="{{ userProfile.getId }}"></input>
+                                <button type="submit">Modifier vos informations</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <section class="user-profile">
+        <h2>VOS RESERVATIONS D'ATELIERS</h2>
+        <div>
+            {% if userReservations %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date de la demande</th>
+                        <th>Date de l'atelier</th>
+                        <th>Lieu reservation</th>
+                        <th>Atelier</th>
+                        <th>Nbr pers / atelier</th>
+                        <th>Prix total</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    {% for userReservation in userReservations %}
+                    <tr>
+                        <td>{{ userReservation.getReservationDate|date("d/m/Y") }}</td>
+                        <td>{{ userReservation.getDisponibility.getDisponibilityDate|date("d/m/Y") }}</td>
+                        <td>
+                        {% if userReservation.getReservationInfoRdv == 0 %}
+                        Rendez-vous au cabinet Paris 12
+                        {% else %}
+                        Rendez-vous en ligne
+                        {% endif %}
+                        </td>
+                        <td>{{ userReservation.getWorkshop.getWorkshopName }}</td>
+                        <td>{{ userReservation.getReservationPersQuantity }}</td>
+                        <td>{{ userReservation.getReservationTotalPrice }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div>Pas de réservation d'atelier pour le moment</div>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

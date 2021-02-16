@@ -1,0 +1,70 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<!-- MAIN -->
+<main>
+    {# SECTION coaching #}
+    <div><hr></div>
+    {# display of articles and display according to section class #}
+    {% for article in articleCoaching %}
+        {% if  article.getSection.getSectionClass == 'section-work' %}
+        <section class="{{ article.getSection.getSectionClass }}">
+            <h2>{{ article.getArticleTitle }}</h2>
+            <div>
+                <h3>{{ article.getArticleSubTitle }}</h3>
+                <article>
+                    <div class="workshops">
+                        {% for workshop in workshops %}
+                            {% if workshop.getWorkshopName != workshopNameOut %}
+                        <div>
+                            <figure>
+                                <figcaption>
+                                   <h3>{{  workshop.getWorkshopName() }}</h3>
+                                    <h4>{{  workshop.getWorkshopDesc() }}</h4>
+                                    <a href="{{ path('reservation', { 'id': workshop.id }) }}"  title="{{  workshop.getWorkshopName() }}">Prendre Rendez-vous</a>
+                                </figcaption>
+                                <img src="{{ asset('images/pictures/'~workshop.getWorkshopImg ) }}" alt="{{workshop.getWorkshopImg}}"> 
+                            </figure>
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <button><a href="{{ path('contact') }}" title="Contactez-moi">Contactez-moi</a></button>
+                </article>
+            </div>
+        </section>
+        {% elseif article.getSection.getSectionClass == 'different-coaching'%}
+        <section class="{{ article.getSection.getSectionClass}}">
+            <h2> {{ article.getArticleTitle }}</h2>
+            <div>
+                {% if article.getArticleImage != '' %}
+                <div class="background-opacity"></div>
+                <img src="{{ asset('images/pictures/'~article.getArticleImage ) }}" alt="{{ article.getArticleImage() }}">
+                {% endif %}
+                <article>
+                    {{ article.getArticleContent|raw }}
+                    {% if article.getArticleTitle == workshopNameOut %}
+                    <button><a href="{{ path('reservation', { 'id': workshopOut.id }) }}"  title="Prendre Rendez-vous">Prendre Rendez-vous</a></button>
+                    {% else %}
+                    <button><a href="{{ path('contact') }}"  title="Contactez-moi">Contactez-moi</a></button>
+                    {% endif %}
+                </article>
+            </div>
+        </section>
+        {% else %}
+        <section class="{{ article.getSection.getSectionClass}}">
+            <h2> {{ article.getArticleTitle }}</h2>
+            <div>
+                {% if article.getArticleImage != '' %}
+                <div class="background-opacity"></div>
+                <img src="{{ asset('images/pictures/'~article.getArticleImage ) }}" alt="{{ article.getArticleImage() }}">
+                {% endif %}
+                <article>
+                    {{ article.getArticleContent|raw }}
+                </article>
+            </div>
+        </section>
+        {% endif %}
+    {% endfor %}
+    <div><hr></div>
+</main>
+{% endblock %}

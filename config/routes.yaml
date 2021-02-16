@@ -1,0 +1,71 @@
+# DEFAULT CONTROLLER  # 
+
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+    
+about:
+    path: /about
+    controller: App\Controller\DefaultController::about
+    
+coaching:
+    path: /coaching
+    controller: App\Controller\DefaultController::coaching
+    
+testimony:
+    path: /testimony
+    controller: App\Controller\DefaultController::testimony
+    
+legalMention:
+    path: /legalMention
+    controller: App\Controller\DefaultController::legalMention
+    
+# CONTACT CONTROLLER  #  
+contactForm:
+    path: /contact
+    controller: App\Controller\ContactController::contactForm
+    
+# RESERVATION ATELIER #
+reservation:
+    path: /reservation/{id}
+    controller: App\Controller\ReservationController::index
+    
+reservation-step:
+    path: /reservation-step
+    controller: App\Controller\ReservationController::reservationStepForm
+    
+reservation-step2:
+    path: /reservation-step2
+    controller: App\Controller\ReservationController::reservationStep2Form
+    
+reservation-stepValidation:
+    path: /reservation-stepValidation
+    controller: App\Controller\ReservationController::reservationStepValidation
+    
+# LOGIN CONTROLLER #  
+login:
+    path: /admin
+    controller: App\Controller\SecurityController::login
+    
+profile:
+    path: /profile
+    controller: App\Controller\SecurityController::login
+    
+# DASHBOARD ADMIN CONTROLLER # 
+dashboard:
+    path: /admin-home
+    controller: App\Controller\Admin\DashboardController::index
+
+# PROFILE USER CONTROLLER #  
+profile-user:
+    path: /profile-user
+    controller: App\Controller\UserProfile\UserProfileController::index
+    
+profile-delete:
+    path: /profile-user-delete
+    controller: App\Controller\UserProfile\UserProfileController::deleteUserProfile
+    
+profile-update:
+    path: /profile-user-update
+    controller: App\Controller\UserProfile\UserProfileController::updateUserProfile
+

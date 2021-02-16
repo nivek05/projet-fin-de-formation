@@ -1,0 +1,26 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<!-- MAIN -->
+<main>
+    {# SECTION reservation step 1 #}
+    <section class="reservation">
+        <h2>RESERVATION</h2>
+        <h3>Etape 1 / 3</h3>
+        <div>
+            <!-- Error display -->
+            {% if form_errors(formResa) != '' %}
+            <h4>{{ form_errors(formResa) }}</h4>
+            {% endif %}
+            <!-- message display -->
+            {% for message in app.flashes('message') %}
+                <h4>{{ message }}</h4>
+            {% endfor %}
+      
+            {{ form(formResa, {'action': path('reservation-step'),'attr':{'class': 'form'}}) }}
+           
+        </div>
+        <div><hr></div>
+    </section>
+     
+</main>
+{% endblock %}

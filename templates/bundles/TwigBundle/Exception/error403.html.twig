@@ -1,0 +1,16 @@
+{% extends 'home.html.twig' %}
+
+{% block main %}
+<main>
+    <section>
+        <h2>Erreur 403 - Accès interdit</h2>
+        <div>
+            <article>
+                <p>Vous n'etes pas autorisé pour cette page</p>
+                <p>Accès interdit.</p>
+                <button><a href="{{ path('home') }}">retournez au site</a></button>
+            </article>
+         </div>
+    </section>
+</main>
+{% endblock %}

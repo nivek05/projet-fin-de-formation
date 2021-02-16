@@ -1,0 +1,16 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<!-- MAIN -->
+<main>
+   {# SECTION USER PROFILE MESSAGE DE VALIDATION DE SUPPRESSION #}
+    <section class="user-profile">
+        <h2>VALIDATION DE SUPPRESSION DU COMPTE</h2>
+        <div>
+            
+           <h4>Vous compte a bien été supprimé</h4>
+           <button><a href="{{ path('home')}}">Revenir à la HomePage</a></button>
+            
+        </div>
+    </section>
+</main>
+{% endblock %}

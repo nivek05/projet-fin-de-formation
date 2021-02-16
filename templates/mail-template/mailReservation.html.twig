@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet">
+    
+    <title>Mail account profile</title>
+</head>
+<body>
+    <header>
+        <p>Bonjour Mr, Mme {{ firstName }} {{ nom }}<p></p>
+    </header>
+    <main>
+        <div>
+            <h2>Votre reservation : </h2>
+            <p>Date de la demande : {{ datePost }}</p>
+            <p>Intitulé : {{ workshop }}</p>
+            <p>Date du rendez-vous: {{ meetingDate }}</p>
+            <p>
+               prix Total : {{ totalPrice }} <br>
+               Nombre de personne à l'atelier  : {{ quantity }} <br>
+            </p>
+            <p>Lieu de l'atelier : 
+            {% if meetingPlace == 0 %}
+                Rendez-vous au cabinet à paris 12ème
+            {% else %}
+                Rendez-vous en ligne : un autre mail vous sera envoyé pour vous connectez sur zoom
+            {% endif %}
+            </p>
+        </div>
+        <div>
+            <h2>Pour vous connecter sur le site :</h2>
+           <p> Login : {{ mail }}</p>
+           <p>* Mot de passe : {{ password }}</p>
+        </div>
+        <div>Ce mot de passe est générer automatiquement, vous pouvez le modifier en accedant a votre compte</div>
+    </main> 
+   <footer>
+       <p>Cordialement,</p>
+       <p><a href="">Actuel Coaching</a> - Julie Bonnet<br>
+        Adresse : 10 rue Taine 75012 PARIS<br>
+        Téléphone : +33 (0) 6 76 34 39 65 - Email : contact@actuelcoaching.fr<br>
+        N° SIRET : 820 498 707 00018</p>
+   </footer>
+</body>
+</html>
+

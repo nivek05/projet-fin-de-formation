@@ -1,0 +1,19 @@
+
+/* Laptop and tablet */
+@mixin sm {
+    @media (max-width:767px){
+        @content;
+    }
+}
+/* Landscape portrait and desktop tablet */
+@mixin md {
+    @media (min-width:768px) and (max-width:979px){
+        @content;
+    }
+}
+/* Wide desk */
+@mixin xl {
+    @media (min-width:980px){
+        @content;
+    }
+}

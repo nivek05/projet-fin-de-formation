@@ -1,0 +1,26 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<main>
+    {# SECTION reservation step 2 #}
+    <section class="reservation">
+        <h2>RESERVATION</h2>
+        <h3>Etape 2 / 3</h3>
+        <div>******** SIMULATION POUR LE WORKFLOW / UN FAUX PAIEMENT*******</div>
+        <div>
+            <p><strong>Récapitulatif</strong></p>
+            <div>Nombre de Personne : {{ quantity }} euros</div>
+            <div>Prix total : {{ totalPrice }}</div>
+        </div>
+        <h4>
+        {% for message in app.flashes('message') %}
+            {{ message }}
+        {% endfor %}
+        </h4>  
+        
+        {# FORM reservation step 2 #}
+        {{ form(formCreditCard, {'attr':{'class': 'form'}}) }}
+        <a href="{{ path('reservation-step') }}" alt="Précédent"><i class="fas fa-long-arrow-alt-left"></i></a>
+        <div><hr></div>
+    </section>
+</main>
+{% endblock %}

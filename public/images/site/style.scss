@@ -1,0 +1,248 @@
+/*********************************************************************/
+/*                         IMPORT fichier scss                       */
+/*********************************************************************/
+@import "reset";
+@import "base";
+@import "media-queries";
+@import "hover";
+
+/*********************************************************************/
+/*                         DEFINITION GRID CONTAINER                 */
+/*********************************************************************/
+.grid-container {
+    display: grid;
+    //max-width: 1200px;
+    margin: auto;
+    min-height: 100vh;
+    grid:
+    "header header header" auto
+    "main main main" 1fr
+    "footer footer footer" auto
+    / 350px auto;
+    
+    
+}
+/*********************************************************************/
+/*                         HEADER                                    */
+/*********************************************************************/
+
+header {
+    grid-area: header;
+    background: linear-gradient(to right, var(--primary), var(--light));
+    //background-image: url(/integration-project-coaching/images/pictures/pexels-snapwire-6989.jpg);
+    
+    .logoNavBar{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-evenly;
+      
+        padding-top:4em;
+        .logo{
+            margin-left:3em;
+            hr{
+                background: var(--background-hr);
+                border:0;
+                margin:0;
+                height: .4rem;
+            }
+        }
+        .navbar{
+            color: var(--text);
+            nav{
+                grid-area: nav;
+                text-align: center;
+                ul{
+                        display: flex;
+                        flex-direction: row; 
+                        margin:1rem;
+                        
+                    li{
+                        /*ajout de 3rem apres chaque li à gauche*/
+                        
+                        + li {
+                            margin-left:3rem; 
+                        }
+                        a{
+                           
+                            text-decoration: none;
+                            padding-bottom: 0.8em;
+                            &.hvr-underline-from-left::before {
+                                background: var(--background-hr);
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .title{
+        color: var(--text);
+        text-align: center;
+        margin-top:5em;
+        font-size: 1.3em;
+        p{
+            margin-top:4em;
+        }
+    }
+
+}
+/*********************************************************************/
+/*                 animation flèche                                  */
+/*********************************************************************/
+.down-arrow{
+    display: block;
+    width: 4.125rem;
+    margin: auto;
+    margin-top :4 rem;
+    img{
+        width: 100%;
+        animation: arrow 1s ease-in-out infinite alternate;
+    }
+}
+//Animation fleche
+@keyframes arrow {
+    from{
+        opacity: 1;
+        margin-top: 0;
+    }
+    to{
+        opacity: 0.2;
+        margin-top: 0;
+    }
+}
+/*********************************************************************/
+/*                         MAIN                                      */
+/*********************************************************************/
+main{
+    grid-area: main;
+    color:var(--main-text);
+    font-family: var(--font-family);
+    margin-top:3em;
+    /* Section texte a gauche - image a droite */
+    .section-row{
+        margin-top:1em;
+        margin-bottom:1em;
+        h2{
+            padding-top:1em;
+            margin: 0 4em 0 0;
+            text-align: right;
+           
+        }
+        div{
+            display: flex;
+            
+            flex-direction: row;
+            align-items:flex-start;
+            margin: 1em 10em 1.5em 10em;
+            article{
+                margin: 0 3em 0 0;
+              
+            }
+
+            img{
+                width:50%;
+                height: auto;
+                object-fit: contain;
+            }
+            
+        }
+    }
+    /* Section texte a droite - image a gauche */
+    .section-row-reverse{
+        margin-top:1em;
+        background:var(--light);
+        h2{
+            padding-top:1em;
+            margin: 0 3.3em 0 4em;
+            text-align: left;
+        }
+        div{
+            display: flex;
+            flex-direction:row-reverse;
+            align-items:flex-start;
+            margin: 1em 10em 1.5em 10em;
+           
+            article{
+                margin: 0 0 0 3em;
+               
+            }
+            img{
+                width:50%;
+                height: auto;
+                object-fit: contain;
+            
+            }
+        }
+    }
+
+    .specific{
+        margin: 1em 10em 1.5em 10em;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+/*********************************************************************/
+/*                         CONTACT                                   */
+/*********************************************************************/
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contact-form label {
+    margin: 1rem 0 1rem 0;
+}
+.contact-form input {
+    border: 0;
+    border-bottom: 1px solid #555;
+    padding: 1rem;
+    font-size: 1.3rem;
+    color:#555;
+    outline: 0;
+    margin-bottom: 1rem;
+}
+.contact-form button {
+    display: block;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 30px;
+    background: #f1c40f;
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+  
+.contact-form button:hover {
+    background: red;
+}
+
+/*********************************************************************/
+/*                         FOOTER                                    */
+/*********************************************************************/
+footer{
+    grid-area: footer;
+    p{
+        margin-bottom: 0;
+        padding: 4em;
+        font-size:1em;
+        color: var(--text);
+        text-align: center;
+        background: var(--background-footer);
+    }
+}

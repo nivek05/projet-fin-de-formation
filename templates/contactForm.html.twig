@@ -1,0 +1,21 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<main>
+    {# SECTION contact#}
+    <div><hr></div>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        {# Display message #}
+        {% for message in app.flashes('message') %}
+            <h4>{{ message }}</h4>
+        {% endfor %}
+        {# Display error #}
+        {% if form_errors(form) != '' %}
+            <h4>{{ form_errors(form) }}</h4>
+        {% endif %}
+        {# FORM contact #}
+        {{ form(form, {'attr':{'class': 'form'}}) }}
+    </section>
+    <div><hr></div>
+</main>
+{% endblock %}

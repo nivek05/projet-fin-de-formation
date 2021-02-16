@@ -1,0 +1,22 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<main>
+    {# SECTION about #}
+    <div><hr></div>
+    {% for article in articleAbout %}
+    <section class="{{ article.getSection.getSectionClass }}">
+        <h2>{{ article.getArticleTitle }}</h2>
+        <div>
+            <div class="background-opacity"></div>
+            {% if article.getArticleImage != '' %}
+                <img src="{{ asset('images/pictures/'~article.getArticleImage ) }}" alt="{{ article.getArticleImage() }}">
+            {% endif %}
+            <article>
+                {{ article.getArticleContent|raw }}
+            </article>
+        </div>
+    </section>
+    {% endfor %}
+    <div><hr></div>
+</main>
+{% endblock %}

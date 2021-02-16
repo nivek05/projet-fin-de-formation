@@ -1,0 +1,20 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<main>
+    <div><hr></div>
+    {# SECTION reservation definition #}
+    <section id="reservation" class="reservation">
+        <h2>ATELIER {{ workshop.getWorkshopName }}</h2>
+        <div>
+            <h3>Prix par séance / personne : {{ workshop.getWorkshopPrice }} €</h3>
+            <article>
+                <p>Ici je vous propose des séances de coaching entièrement personnalisées… voici comment cela se passe :</p>
+                {{ workshop.getWorkshopDesc }}
+            </article>
+            <button><a href="{{ path('reservation-step') }}">Je réserve mon atelier</a></button>
+        </div>
+        
+    </section>
+    <div><hr></div>
+</main>
+{% endblock %}

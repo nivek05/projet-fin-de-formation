@@ -1,0 +1,108 @@
+
+/********************************************/
+/***** Carousel pour la page Témoignage *****/
+/********************************************/
+
+#carousel {
+    position:relative;
+	max-width:80%;
+	height:400px;
+	margin:0;
+	min-width:480px;
+}
+
+#carousel, #carousel-items .carousel-item, figure{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+#carousel-items .carousel-item {
+	position: relative;	
+    top:0;
+
+    figure, img {
+	    position: absolute;
+        width:100%;
+        height:300px;
+        top:0;
+        left:0;
+    }
+	figcaption {
+		position: absolute;
+	    bottom:0;
+		width: 100%;
+		overflow:auto;
+		padding: 1.7rem 3.4rem;
+		text-align: center;
+		color: #fff;
+		background-color: rgba(0,0,0,0.7);
+				
+		a {
+			color: #fff;
+			
+			&:hover, &:focus, &:active {
+				text-decoration: none; 	
+			}	
+		}
+	}
+}
+
+#carousel-items .active {
+	opacity: 1;
+	transition: opacity 2s;
+	visibility: visible;
+}
+#carousel-items .carousel-item:not(.active) {
+	opacity: 0;
+	transition: opacity 3s;
+	visibility: hidden;
+}
+
+.carousel-control button {
+	background-color: rgba(0,0,0,0.7);
+	border-style: none;
+	display: inline-block;
+	border: none;
+	background: none;
+	cursor: pointer;
+	
+	svg, g{
+	    fill:#f6f6f6;
+	}
+
+	&:hover, &:focus, &:active {
+		border:1px solid red;
+		background-color: rgba(255, 255, 255, 0.9);
+		svg, g{
+            fill:#474747;
+    	}
+	}
+}
+
+#carousel {
+	
+	.carousel-control button {
+		position:absolute;
+		z-index: 1;
+		
+	}
+	.slide-prev, .slide-next {
+		top: calc(100% - 2rem);
+		padding: 0.6rem;
+		border-radius: 7px 7px 7px 7px;
+		
+	}
+	.slide-prev {
+		left:1em;
+		top:13em;
+	
+	}
+	.slide-next {
+		right:1em;
+		top:13em;
+		
+	}
+}
+

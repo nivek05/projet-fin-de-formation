@@ -1,0 +1,77 @@
+html {
+    font-size: 62.5%;
+}
+  
+body {
+  font-family: var(--font-family);
+  color: var(--text);
+  font-size: 1.2rem;
+  background: var(--background);
+  min-height:100;
+}
+
+hr{
+  overflow:hidden;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+h1{
+  margin:0;
+  font-family: var(--font-family-jellyka);
+  font-weight: normal;
+  font-size: 8em;
+  color:#5b6461;
+}
+
+h2{
+  font-weight: normal;
+  font-size: 5em;
+  font-family: var(--font-family-amatic);
+}
+
+h3{
+  font-size: 1.2em;
+  letter-spacing: .3em;
+  padding-bottom: 2em;
+}
+
+h4,
+h5,
+h6 {
+  margin: 1rem 0 2rem 0;
+  letter-spacing: 0.3rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+a:hover,
+a:focus,
+a:active{
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+article{
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+
+footer {
+  font-family: var(--font-family);
+ 
+}

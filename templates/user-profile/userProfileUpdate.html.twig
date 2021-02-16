@@ -1,0 +1,33 @@
+{% extends 'home.html.twig' %}
+{% block main %}
+<!-- MAIN -->
+<main>
+   {# SECTION USER PROFILE #}
+    <section class="user-profile update">
+        <h2>VOS INFORMATIONS</h2>
+        <div>
+            <h4>Modifier les champs</h4>
+             {% for message in app.flashes('message') %}
+            <h4>{{ message }}</h4>
+            {% endfor %}
+             <!-- Affichage du message erreur -->
+            {% if form_errors(formUserUpdate) != '' %}
+                <h4>{{ form_errors(formUserUpdate) }}</h4>
+            {% endif %}
+            
+            {# FORM USER #}
+            <form action="{{ path('profile-update') }}" method="post" class="form">
+                
+                {{ form_widget(formUserUpdate) }}
+ 
+            </form>
+            <a href="{{ path('profile-user') }}"><i class="fas fa-long-arrow-alt-left"></i></a>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+
+
+            

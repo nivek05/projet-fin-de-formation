@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/site/logo16x16.png">
+        <meta name="description" content="Actuel Coaching">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="keywords" content="Actuel Coaching, coaching, atelier coaching">
+	    <meta name="auhtor" content="Kevin">
+        <title>{% block title %}Actuel Coaching{% endblock %}</title>
+        <!-- STYLES -->
+        {% block stylesheets %}
+        <link rel="stylesheet" href="/projet-fin-de-formation/coaching/public/media/css/normalize.css">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        <!-- Google fonts-->
+        {% block fonts %}
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+        {% endblock %}  
+    </head>
+    <body>
+        <div class="grid-container">
+        <!-- BLOCK BODY -->
+        {% block body %}
+            <!-- Menu responsive-->
+            <div id="nav-link" class="nav-link">
+                <ul>
+                    <li><a href="{{ path('about') }}" title="About">A propos de moi</a></li>
+                    <li><a href="{{ path('coaching') }}" title="Coaching">Coaching</a></li>
+                    <li><a href="{{ path('testimony') }}" title="Témoignages">Témoignages</a></li>
+                    <li><a href="{{ path('contact') }}" title="Contact">Prenez contact</a></li>
+                    <li><a href="{{ path('profile') }}" title="Profile"><i class="fas fa-user"></i></a></li>
+                    {% if app.user %}
+                    <li><a href="{{ path('app_logout')}}" title="Deconnection"><i class="fas fa-times"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- BLOCK HEADER -->
+            {% block header %}
+            <header>
+                <div class="logoNavBar">
+                     <!-- LOGO -->
+                    <div class="logo">
+                        <a href="{{ path('home') }}" title="Home"><h1>Actuel coaching</h1></a>
+                    </div>
+                    <!-- NAV -->
+                    <div class="navbar">
+                        <nav>
+                            <ul>
+                                <li><a class="underline {% if app.request.get('_route') == 'about' %}active{% endif %}" href="{{ path('about') }}" title="About">A propos de moi</a></li>
+                                <li><a class="underline {% if app.request.get('_route') == 'coaching' or app.request.get('_route') == 'reservation' %}active{% endif %}" href="{{ path('coaching') }}" title="Coaching">Coaching</a></li>
+                                <li><a class="underline {% if app.request.get('_route') == 'testimony' %}active{% endif %}" href="{{ path('testimony') }}" title="Témoignages">Témoignages</a></li>
+                                <li><a class="underline {% if app.request.get('_route') == 'contact' %}active{% endif %}" href="{{ path('contact') }}"  title="Contact">Prenez contact</a></li>
+                                <li><a href="{{ path('profile') }}" title="Profile"><i class="fas fa-user"></i></a></li>
+                                {% if app.user %}
+                                <li><a href="{{ path('app_logout')}}" title="Déconnection"><i class="fas fa-times"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        <!-- NAV responsive s'affiche si <= 979 px -->
+                        <nav class="nav-hidden">
+                            <a href="#" class="nav-button" id="nav-button" title="Nav">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </a>
+                        </nav>
+                        
+                    </div>
+                    
+                </div>
+                <!-- CITATION -->
+                <div class="quote">
+                    <blockquote id="sentence">« Vous ne trouverez jamais ce que vous ne cherchez pas »<br>Confucius</blockquote>
+                    
+                </div>
+            </header>
+            {% endblock %}
+            {% block main %}
+            <!-- MAIN -->
+            <main>
+                <div><hr></div>
+                {% for article in articleHome %}
+                    <!-- SECTION INTRO -->
+                <section class="{{ article.getSection.getSectionClass}}">
+                    <h2> {{ article.getArticleTitle }}</h2>
+                    <div>
+                        {% if article.getArticleImage != '' %}
+                        <div class="background-opacity"></div>
+                        <img src="{{ asset('images/pictures/'~article.getArticleImage ) }}" alt="{{ article.getArticleImage() }}">
+                        {% endif %}
+                        <article>
+                            {{ article.getArticleContent|raw }}
+                        </article>
+                    </div>
+                    <div><strong>RELATION COLLABORATIVE - HARMONIE - MOUVEMENT-BIENVEILLANCE</strong></div>
+                    <i class="home-sentence">Vos aspirations vont prendre&nbsp;de&nbsp;l’élan&nbsp;...</i>
+                </section>
+               
+                {% endfor %}
+                <div><hr></div>
+            </main>
+            {% endblock %}
+            {% block footer %}
+            <!-- FOOTER -->
+            <footer>
+                <p>Adresse : 10 rue Taine 75012 PARIS</p>
+                <p>Téléphone : +33 (0) 6 76 34 39 65 - Email : contact@actuelcoaching.fr</p>
+                <p>N° SIRET : 820 498 707 00018</p>
+                <p><a href="{{ path('legalMention') }}" title="Mention légales">Mention légales</a></p>
+                <p><a href="#" title="facebook"><img src="{{ asset('images/site/facebook.svg') }}" alt="facebook"></a></p>
+            </footer>
+            {% endblock %}
+        
+        {% endblock %}
+        </div>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJ0M2J339N"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-JJ0M2J339N');
+            </script>
+            <script src="https://kit.fontawesome.com/c8aa19112b.js" crossorigin="anonymous"></script>
+            <script type="javascripts" src="{{ asset('js/index.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

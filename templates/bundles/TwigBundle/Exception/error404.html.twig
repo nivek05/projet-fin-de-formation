@@ -1,0 +1,15 @@
+{% extends 'home.html.twig' %}
+
+{% block main %}
+<main>
+    <section>
+        <h2>Erreur 404 - Page non trouvé</h2>
+        <div>
+            <article>
+                <p> La page demandée n'a pas pu être localisée.</p>
+                <button><a href="{{ path('home') }}"><strong>Retournez au site</strong></a></button>
+            </article>
+         </div>
+    </section>
+    </main>
+{% endblock %}
