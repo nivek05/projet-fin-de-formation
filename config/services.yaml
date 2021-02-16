@@ -32,7 +32,7 @@ services:
     App\Utils\ServiceMailer:
         arguments:
             # We pass as arguments the email address of the admin and the subject of the email
-            $adminEmail: 'kevin.gargadennec@3wa.io'
+            $adminEmail: ''
             $subjectEmail: 'Un contact vous a fait une demande'
             $subjectEmailReservation: 'Votre réservation - Atelier'
             $subjectEmailProfileUpdateDelete: 'Modification de votre compte'
